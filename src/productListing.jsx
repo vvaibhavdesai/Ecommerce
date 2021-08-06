@@ -62,7 +62,7 @@ export function ProductListing() {
             return <ProductCard key={item.id} item={item} />;
           })
         ) : (
-          <h2>No matching item found</h2>
+          <h2 style={{textAlign:"Center"}}>No matching item found</h2>
         )}
       </div>
       <button
