@@ -55,8 +55,8 @@ export function ProductCard({ item }) {
         </h4>
         <div>
           <p>{`Brand: ${item.brand}`}</p>
-          <p>{`fast-Delivery: ${item.fastDelivery}`}</p>
-          <p>{`Material: ${item.material}`}</p>
+          <p>{`fast-Delivery: ${`${item.fastdelivery  ? `Yes`:`NO`} `}`}</p>
+          <p>{`Stock: ${`${item.inStock  ? `Yes`:`NO`} `}`}</p>
           <p className="product-price">{`${item.offer}`}</p>
         </div>
         <div className="product-bottom-details">

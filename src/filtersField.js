@@ -6,6 +6,7 @@ export const Filters = ({
   showInventory,
   priceRange,
   dispatch,
+  fastDelivery
 }) => {
   return (
     <>
@@ -45,13 +46,16 @@ export const Filters = ({
                 checked={!showInventory}
                 onChange={() => dispatch({ type: "SHOW_INVENTORY" })}
               ></input>
-              In-Stock
+              Include Out of Stock
             </label>
           </li>
           <li>
             <label>
-              <input type="checkbox" name="inStock"></input>
-              Fast Delivery
+              <input type="checkbox" 
+              name="inStock"
+              checked={!fastDelivery}
+              onChange={() => dispatch({ type: "FAST_DELIVERY" })} ></input>
+              All Delivery Options
             </label>
           </li>
         </div>
