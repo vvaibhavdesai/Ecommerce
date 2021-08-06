@@ -26,7 +26,7 @@ export function ProductListing() {
   useEffect(() => {
     const ele = document.querySelector(".buble");
     if (ele) {
-      ele.style.left = `${Number(priceRange / 5)}px`;
+      ele.style.left = `${Number(priceRange / 7)}px`;
     }
   });
 
