@@ -6,16 +6,28 @@ import { useCart } from "./Context/CartContextProvider";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Navigation from "./Navigation/Navigation";
 import { LoginPage } from "./Pages/LoginPage/LoginPage";
+import { HomePage } from "./Pages/Homepage"
 import { PrivateRoute } from "./Context/PrivateRoute";
 import { useEffect } from "react";
 import axios from "axios";
 import { useAuth } from "./Context/AuthProvider";
+import { ToastContainer, toast }  from "react-toastify";
 
 export default function App() {
   const { cart, wishList, setWishList, setCart } = useCart();
   const { setUserData, userData, setUserLogin, isUserLogin, setUserToken,userToken } = useAuth();
   const navigate = useNavigate()
   console.log(userToken,"yeh dekih aya token")
+
+  const notify=(message)=>toast.dark(message, {
+    position: "bottom-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  })
 
   useEffect(() => {
     if (!isUserLogin) {
@@ -43,6 +55,7 @@ export default function App() {
 
   useEffect(()=>{
     if(userToken){
+      notify("Welcome,Happy Shopping")
       navigate('/')
     }
   },[userToken])
@@ -72,12 +85,24 @@ export default function App() {
 
   return (
     <div className="App">
+      <ToastContainer
+            position="bottom-right"
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
       <Navigation wishList={wishList} cart={cart} />
       <Routes>
         <PrivateRoute path="/cart" element={<Cart />} />
         <Route path="/" element={<ProductListing />} />
         <PrivateRoute path="/wishlist" element={<WishList />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/homepage" element={<HomePage/>}/>
       </Routes>
     </div>
   );
