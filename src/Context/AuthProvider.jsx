@@ -1,6 +1,7 @@
 import { useContext, createContext, useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import { toast } from "react-toastify";
 
 export const AuthContext = createContext();
 
@@ -9,7 +10,15 @@ export function AuthProvider({ children }) {
   const [userToken, setUserToken] = useState(null);
   const [userData, setUserData] = useState(null);
   
-  
+  const notify=(message)=>toast.dark(message, {
+    position: "bottom-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  })
 
   const setLocalStorage = ({ token }) => {
     if (localStorage) {
@@ -39,6 +48,7 @@ export function AuthProvider({ children }) {
       setUserData(data.user);
       console.log(data);
     } catch (error) {
+      notify("Something went wrong")
       console.log(error);
     }
   }
@@ -73,6 +83,7 @@ export function AuthProvider({ children }) {
       setCart(data.user.cart)
       console.log(data.user, "this is user ka data");
     } catch (error) {
+      notify("Please Check Email/Password")
       console.log(error);
     }
   };

@@ -2,6 +2,7 @@ import { useCart } from "./Context/CartContextProvider";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from './Context/AuthProvider';
+import { toast } from "react-toastify";
 import { useEffect } from "react";
 
 // function ProductCard({id,name,instock})
@@ -10,11 +11,22 @@ export function ProductCard({ item }) {
   const navigate = useNavigate();
   const { userData } = useAuth()
 
+  const notify=(message)=>toast.dark(message, {
+    position: "bottom-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  })
+
   const cartClickHandler = (item) => {
     if (cart.find((items) => items._id === item._id)) {
       navigate("/cart");
     } else {
       setCart((items) => [...items, item]);
+      notify('Item added to Cart')
     }
   };
 
@@ -25,6 +37,7 @@ export function ProductCard({ item }) {
     } else {
      
         setWishList((items) => [...items, item]);
+        notify('Item added to WishList')
       }
   };
 
