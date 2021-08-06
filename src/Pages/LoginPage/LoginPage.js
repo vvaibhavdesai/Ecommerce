@@ -1,15 +1,16 @@
 import "./LoginPage.css";
 import { useState } from "react";
-import { useAuth } from './../../Context/AuthProvider';
-import { useCart } from './../../Context/CartContextProvider';
+import { useAuth } from "./../../Context/AuthProvider";
+import { useCart } from "./../../Context/CartContextProvider";
+import { ToastContainer } from "react-toastify";
 
 export function LoginPage() {
   const [loginForm, setLoginForm] = useState(false);
   const [userName, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { loginManager, signUpManager } = useAuth()
-  const { setWishList, setCart } = useCart()
+  const { loginManager, signUpManager } = useAuth();
+  const { setWishList, setCart } = useCart();
   return (
     <div className="form-container">
       <form
@@ -54,11 +55,23 @@ export function LoginPage() {
           onClick={() =>
             loginForm
               ? signUpManager(userName, email, password)
-              : loginManager(email, password, setWishList,setCart)
+              : loginManager(email, password, setWishList, setCart)
           }
         ></input>
-
+        {!loginForm && (
+          <div>
+            <p>
+              <span>TestEmail:</span>
+              <span> vaibhavdesai888@gmail.com</span>
+            </p>
+            <p>
+              <span>password:</span>
+              <span> vaibhav</span>
+            </p>
+          </div>
+        )}
         <button
+          className={loginForm ? "use-anywhere-btn2 margin-adder ":"use-anywhere-btn2" }
           onClick={() => {
             setLoginForm((prev) => !prev);
             console.log("inside onclick", loginForm);
@@ -67,6 +80,17 @@ export function LoginPage() {
           {loginForm ? `Go to Login` : `Go to Sign-up`}
         </button>
       </form>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }
