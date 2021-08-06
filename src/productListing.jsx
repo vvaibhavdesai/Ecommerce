@@ -10,6 +10,7 @@ import { showinventory, fastdelivery } from "./Logic/showinventory";
 import sortingFunction from "./Logic/sortingfunction";
 import { useSearch } from "./SearchContext";
 import { useData } from "./Context/DataContext";
+import Loader from "react-loader-spinner";
 export function ProductListing() {
   const [{ sortingAction, fastDelivery, showInventory, priceRange }, dispatch] = useReducer(
     reducer,
@@ -52,7 +53,7 @@ export function ProductListing() {
         fastDelivery={fastDelivery}
       />
       <div className="products-section">
-        {productData.length === 0 && <>Loading......</>}
+        {productData.length === 0 && <div style={{width:"100%",height:"auto",display:"flex",justifyContent:'center',alignItems:"center"}}><Loader type="Audio" color="#393d46" height={80} width={80} /> </div>}
         {productData && search === "" ? (
           priceRangeData.map((item) => {
             return <ProductCard key={item.id} item={item} />;
