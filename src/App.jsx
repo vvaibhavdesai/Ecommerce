@@ -102,7 +102,6 @@ export default function App() {
         <Route path="/" element={<ProductListing />} />
         <PrivateRoute path="/wishlist" element={<WishList />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/homepage" element={<HomePage/>}/>
       </Routes>
     </div>
   );
