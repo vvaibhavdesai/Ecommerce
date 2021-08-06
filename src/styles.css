@@ -1,5 +1,6 @@
 /* @import url("https://purvasheth.github.io/Ceres-Component-Lib/lib/styles.css"); */
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
+@import url("react-toastify/dist/ReactToastify.css");
 
 .App {
 }
@@ -14,6 +15,7 @@
 html {
   margin: 0;
 }
+
 body {
   margin: 0px;
   padding: 0px;
@@ -185,6 +187,7 @@ body {
 .fa {
   font-size: 1.5rem;
   padding: 0.2rem;
+  cursor:pointer;
 }
 
 .product-bottom-details div {
@@ -235,7 +238,7 @@ body {
 .cart_table {
   border-collapse: collapse;
   border-spacing: 0;
-  width: 30rem;
+  max-width: 40rem;
   height: auto;
 }
 
@@ -243,8 +246,14 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 40rem;
   padding: 1rem;
   margin: 1rem;
+}
+.cart_table_center{
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
 th {
@@ -252,6 +261,7 @@ th {
   font-size: 1rem;
 }
 td {
+  width:7rem;
   padding: 1rem;
   text-align: center;
 }
@@ -289,6 +299,10 @@ tr {
 }
 
 /* use anywhere buttons */
+.checkout-btn{
+  margin-top:1rem;
+  margin-left:1rem;
+}
 
 .use-anywhere-fa {
   display: inline-block;
@@ -300,7 +314,7 @@ tr {
   font-size: 1rem;
 }
 .color {
-  color: #61646b;
+  color: #b8bdc8;
 }
 
 .use-anywhere-fa :active {
@@ -321,6 +335,21 @@ tr {
   border-radius: 10px;
 }
 
+.use-anywhere-btn2 {
+  padding:0.5rem 1rem;
+  background-color: #61646b;
+  font-weight: 700;
+  font-family: "Open Sans", sans-serif;
+  color: white;
+  border: transparent;
+  cursor: pointer;
+  min-width: max-content;
+  border-radius: 10px;
+}
+.margin-adder{
+  margin-top:0.5rem
+}
+
 .use-anywhere-btn:hover {
   background-color: black;
 }
@@ -333,6 +362,9 @@ tr {
   box-shadow: 3px 2px 22px 1px #f6f7fb;
   outline: none;
 }
+.homepage{
+  background:#393d46;
+}
 
 .drop-trigger {
   background-color: #393d46;
@@ -342,6 +374,64 @@ tr {
   display: none;
 }
 
+.header-brands{
+  display:flex;
+  justify-content: center;
+  width:100%;
+  margin:1rem 0 1rem 0
+}
+.brands-list{
+  list-style:none;
+  width:100%;
+  display:flex;
+  margin:1rem;
+  justify-content: space-between;
+}
+.brands-list > p{
+  color:#bdc0c7;
+  font-size:2rem;
+  font-weight: 700;
+  margin:1rem
+}
+
+.brands-list > p:hover{
+  color:white;
+}
+.header-img{
+  height:70vh;
+  position:relative;
+  width:100%;
+  opacity:0.8;
+  object-fit:fill;
+  
+}
+
+.header-overlay{
+  position:absolute;
+  top:100px;
+  height: 70vh;
+  width:100%;
+  color:white;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+.homepage-center{
+  height:100vh;
+  background:#393d46;
+  margin:-0.5rem 0 -0.5rem 0;
+  width:100%;
+}
+.homepage-products{
+display:grid;
+grid-template-columns:repeat(3, calc( ((100vw - 4rem)/3)) );
+}
+.homepage-products-1{
+  height:20rem;
+  object-fit:contain
+}
 @media only screen and (max-width: 1000px) {
   .side-nav-filter {
     position: fixed;
