@@ -36,7 +36,7 @@ export const Filters = ({
           </li>
         </div>
         <div className="side-nav-generic-filter">
-          <h4>Saman Chi var var mahiti</h4>
+          <h4>Product Status</h4>
           <li>
             <label htmlFor="showInventory">
               <input
@@ -51,7 +51,7 @@ export const Filters = ({
           <li>
             <label>
               <input type="checkbox" name="inStock"></input>
-              patkan pochel
+              Fast Delivery
             </label>
           </li>
         </div>
