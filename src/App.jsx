@@ -6,7 +6,6 @@ import { useCart } from "./Context/CartContextProvider";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Navigation from "./Navigation/Navigation";
 import { LoginPage } from "./Pages/LoginPage/LoginPage";
-import { HomePage } from "./Pages/Homepage"
 import { PrivateRoute } from "./Context/PrivateRoute";
 import { useEffect } from "react";
 import axios from "axios";
