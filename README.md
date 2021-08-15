@@ -5,7 +5,7 @@
 Open [https://gharse.netlify.app/](https://gharse.netlify.app/) to view it in the browser.
 
 ## Features:
-  - Add items to wishlist & Cart.
+  - Add items to wishlist & cart.
   - Adjust user quantity.
   - Payment Mocking done using Razorpay web integeration.
   - Multiple filters to filter items from.
